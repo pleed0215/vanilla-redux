@@ -1,27 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
-
-import { Provider } from "react-redux";
-import App from "./App";
-import { todoStore } from "./store.js";
-
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={todoStore}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
-/*
-  vanilla redux version of code. 
 import { createStore } from "redux";
 let globalIndex = 0;
-
-const formTodo = document.getElementById("form-todo");
-const todoText = document.getElementById("todo-input");
-const submit = document.getElementById("submit-todo");
-const todoUl = document.getElementById("todo-list");
 
 const ITEM_ADD = "@TODO_ITEM_ADD";
 const ITEM_REMOVE = "@TODO_ITEM_REMOVE";
@@ -40,14 +19,37 @@ const todoModifier = (todoItems = [], action) => {
   }
 };
 
-const todoStore = createStore(todoModifier);
-const todosRender = () => {
+const addTodo = (text) => {
+  return {
+    type: ITEM_ADD,
+    data: {
+      id: globalIndex++,
+      item: text,
+    },
+  };
+};
+
+const removeTodo = (id) => {
+  return {
+    type: ITEM_REMOVE,
+    data: {
+      id,
+    },
+  };
+};
+
+export const actionCreator = {
+  addTodo: (text) => addTodo(text),
+  removeTodo: (id) => removeTodo(id),
+};
+
+export const todoStore = createStore(todoModifier);
+/*const todosRender = () => {
   const todos = todoStore.getState();
 
   //while (todoUl.hasChildNodes()) {
   //  todoUl.removeChild(todoUl.firstChild);
   //}
-  todoUl.innerHTML = "";
 
   if (todos && todos.length > 0) {
     todos.map((todo) => {
@@ -61,7 +63,6 @@ const todosRender = () => {
       buttonNode.addEventListener("click", (e) => {
         const pickedId = parseInt(e.target.parentNode.id.split("-")[1]);
 
-        todoUl.removeChild(e.target.parentNode);
         console.log(e.target.parentNode);
         todoStore.dispatch({
           type: ITEM_REMOVE,
@@ -72,27 +73,8 @@ const todosRender = () => {
       });
       node.appendChild(textNode);
       node.appendChild(buttonNode);
-      todoUl.appendChild(node);
     });
   }
 };
 
-todoStore.subscribe(todosRender);
-submit.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  if (todoText.value) {
-    const item = todoText.value;
-    const id = globalIndex++;
-
-    todoStore.dispatch({
-      type: ITEM_ADD,
-      data: {
-        id,
-        item,
-      },
-    });
-  }
-  todoText.value = "";
-});
-*/
+todoStore.subscribe(todosRender);*/

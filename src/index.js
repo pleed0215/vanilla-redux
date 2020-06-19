@@ -37,9 +37,10 @@ const todoStore = createStore(todoModifier);
 const todosRender = () => {
   const todos = todoStore.getState();
 
-  while (todoUl.hasChildNodes()) {
+  /*while (todoUl.hasChildNodes()) {
     todoUl.removeChild(todoUl.firstChild);
-  }
+  }*/
+  todoUl.innerHTML = "";
 
   if (todos && todos.length > 0) {
     todos.map((todo) => {
@@ -51,7 +52,6 @@ const todosRender = () => {
       buttonNode.innerText = "𝗫";
       buttonNode.style.margin = "2px 0px 2px 15px";
       buttonNode.addEventListener("click", (e) => {
-        console.log(e);
         const pickedId = parseInt(e.target.parentNode.id.split("-")[1]);
 
         todoUl.removeChild(e.target.parentNode);

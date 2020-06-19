@@ -1,4 +1,4 @@
-/*import React from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 
@@ -7,7 +7,9 @@ ReactDOM.render(
     <App />
   </React.StrictMode>,
   document.getElementById("root")
-);*/
+);
+/*
+  vanilla redux version of code. 
 import { createStore } from "redux";
 let globalIndex = 0;
 
@@ -37,9 +39,9 @@ const todoStore = createStore(todoModifier);
 const todosRender = () => {
   const todos = todoStore.getState();
 
-  /*while (todoUl.hasChildNodes()) {
-    todoUl.removeChild(todoUl.firstChild);
-  }*/
+  //while (todoUl.hasChildNodes()) {
+  //  todoUl.removeChild(todoUl.firstChild);
+  //}
   todoUl.innerHTML = "";
 
   if (todos && todos.length > 0) {
@@ -88,3 +90,4 @@ submit.addEventListener("click", (e) => {
   }
   todoText.value = "";
 });
+*/

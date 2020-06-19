@@ -3,15 +3,24 @@ import { createStore } from "redux";
 const ITEM_ADD = "@TODO_ITEM_ADD";
 const ITEM_REMOVE = "@TODO_ITEM_REMOVE";
 
-const todoModifier = (todoItems = [], action) => {
+const todoModifier = (
+  todoItems = JSON.parse(window.localStorage.getItem("todos")) || [],
+  action
+) => {
   const item = action?.data?.item,
     id = action?.data?.id;
+  let newTodos;
 
+  console.log(todoItems);
   switch (action.type) {
     case ITEM_ADD:
-      return [...todoItems, { id, item }];
+      newTodos = [...todoItems, { id, item }];
+      window.localStorage.setItem("todos", JSON.stringify(newTodos));
+      return newTodos;
     case ITEM_REMOVE:
-      return todoItems.filter((todo) => todo.id !== action?.data?.id);
+      newTodos = todoItems.filter((todo) => todo.id !== action?.data?.id);
+      window.localStorage.setItem("todos", JSON.stringify(newTodos));
+      return newTodos;
     default:
       return todoItems;
   }

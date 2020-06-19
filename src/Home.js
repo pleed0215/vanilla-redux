@@ -34,9 +34,7 @@ function Home({ todos, addTodo, removeTodo }) {
       </div>
       <div>
         <ul>
-          {todos.map((todo) => (
-            <TodoItem key={todo.id} {...todo} />
-          ))}
+          {todos && todos.map((todo) => <TodoItem key={todo.id} {...todo} />)}
         </ul>
       </div>
     </>

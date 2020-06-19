@@ -2,18 +2,20 @@ import React from "react";
 import { connect } from "react-redux";
 import { actionCreator } from "store";
 
-const TodoItem = ({ item, onBtnClick }) => {
+import { Link } from "react-router-dom";
+
+const TodoItem = ({ item, id, onBtnClick }) => {
   return (
     <li>
-      <span>{item}</span>
+      <Link to={`/${id}`}>
+        <span>{item}</span>
+      </Link>
       <button onClick={onBtnClick}>X</button>
     </li>
   );
 };
 
 function mapDispatchToProps(dispatch, ownProps) {
-  console.log(ownProps);
-
   return {
     onBtnClick: () => dispatch(actionCreator.removeTodo(ownProps.id)),
   };

@@ -5,8 +5,8 @@ import { actionCreator } from "store";
 import TodoItem from "TodoItem";
 
 function Home({ todos, addTodo, removeTodo }) {
-  console.log(todos);
   const [todoText, setTodoText] = useState("");
+
   const onChangeTodoInput = (e) => {
     setTodoText(e.target.value);
   };
@@ -35,7 +35,7 @@ function Home({ todos, addTodo, removeTodo }) {
       <div>
         <ul>
           {todos.map((todo) => (
-            <TodoItem id={todo.id} key={todo.id} item={todo.item} />
+            <TodoItem key={todo.id} {...todo} />
           ))}
         </ul>
       </div>

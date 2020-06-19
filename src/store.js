@@ -1,6 +1,4 @@
-import React from "react";
 import { createStore } from "redux";
-let globalIndex = 0;
 
 const ITEM_ADD = "@TODO_ITEM_ADD";
 const ITEM_REMOVE = "@TODO_ITEM_REMOVE";
@@ -23,7 +21,7 @@ const addTodo = (text) => {
   return {
     type: ITEM_ADD,
     data: {
-      id: globalIndex++,
+      id: Date.now(),
       item: text,
     },
   };

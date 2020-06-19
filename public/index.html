@@ -37,8 +37,15 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <button id="plus">Plus</button>
-    <span id="number">0</span>
-    <button id="minus">Minus</button>
+    <form id="form-todo">
+      <input
+        type="text"
+        name="todo-input"
+        id="todo-input"
+        placeholder="Write your things to do"
+      />
+      <input type="submit" value="TODO" id="submit-todo" />
+    </form>
+    <ul id="todo-list"></ul>
   </body>
 </html>
